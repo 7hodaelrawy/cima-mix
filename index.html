@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cima Mix — عالم الأفلام</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <header class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <span class="logo-icon">🎬</span>
+        <span class="logo-text">Cima<span class="logo-accent">Mix</span></span>
+      </a>
+      <      <nav class="nav-links">
+        <a href="#" class="active" data-category="popular" onclick="loadCategory('popular', this); return false;">الرئيسية</a>
+        <a href="#" data-category="top_rated" onclick="loadCategory('top_rated', this); return false;">الأفلام</a>
+        <a href="#" data-category="tv" onclick="loadCategory('tv', this); return false;">المسلسلات</a>
+        <a href="#" data-category="trending" onclick="loadCategory('trending', this); return false;">الأكثر مشاهدة</a>
+        <a href="#" onclick="toggleFavoritesView(); return false;" id="favoritesLink">⭐ قائمتي</a>
+      </nav>
+      </nav>
+      </nav>
+      <div class="search-box">
+        <input type="text" placeholder="ابحث عن فيلم..." id="searchInput">
+        <button>🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- قسم البطل (Hero) -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge">الأكثر رواجاً الآن</span>
+      <h1 class="hero-title">Dune: Part Two</h1>
+      <div class="hero-meta">
+        <span>⭐ 8.8</span>
+        <span>2024</span>
+        <span>خيال علمي</span>
+        <span>166 دقيقة</span>
+      </div>
+      <p class="hero-desc">
+        بول أتريديز يتحد مع الفريمن في رحلة انتقامية ضد المتآمرين الذين دمروا عائلته.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary">▶ شاهد الآن</button>
+        <button class="btn btn-secondary">+ أضف للمفضلة</button>
+      </div>
+    </div>
+  </section>
+  <!-- قسم المفضلة -->
+  <section class="movies-section favorites-section" id="favoritesSection" style="display:none;">
+    <div class="container">
+      <div class="section-header">
+        <h2>⭐ قائمتي</h2>
+        <button class="see-all" onclick="clearFavorites()" style="background:none;border:none;cursor:pointer;">مسح الكل</button>
+      </div>
+      <div class="movies-grid" id="favoritesGrid"></div>
+    </div>
+  </section>
+  <!-- قسم الأفلام -->
+  <section class="movies-section">
+          <div class="section-header">
+        <h2 id="sectionTitle">أحدث الأفلام</h2>
+      </div>
+      <div class="movies-grid" id="moviesGrid">
+        <!-- سيتم إضافة الأفلام هنا عبر JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">🎬</span>
+          <span class="logo-text">Cima<span class="logo-accent">Mix</span></span>
+          <p>عالمك إلى السينما، في مكان واحد.</p>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <a href="#">عن الموقع</a>
+          <a href="#">اتصل بنا</a>
+          <a href="#">سياسة الخصوصية</a>
+        </div>
+        <div class="footer-links">
+          <h4>تابعنا</h4>
+          <a href="#">فيسبوك</a>
+          <a href="#">تويتر</a>
+          <a href="#">إنستغرام</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Cima Mix. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- نافذة تفاصيل الفيلم -->
+  <div class="modal" id="movieModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-body" id="modalBody">
+        <!-- سيتم إضافة التفاصيل هنا عبر JavaScript -->
+      </div>
+    </div>
+    </div>
+  <button id="backToTop" class="back-to-top" title="العودة للأعلى">↑</button>
+
+  <script src="script.js"></script>
+</body>
