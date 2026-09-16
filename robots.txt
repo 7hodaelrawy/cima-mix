@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cima-mix.slushygaming666.workers.dev/sitemap.xml
