@@ -335,11 +335,23 @@ async function init() {
   loader.textContent = 'جارٍ تحميل المزيد...';
   grid.parentElement.appendChild(loader);
 
-  let searchTimeout;
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => searchMovies(e.target.value), 400);
-  });
+ let searchTimeout;
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  clearTimeout(searchTimeout);
+  const query = e.target.value.trim();
+  
+  // إذا كان النص فارغاً، أعد عرض الأفلام الشائعة فوراً
+  if (query === '') {
+    displayMovies(window.currentMovies);
+    return;
+  }
+  
+  // إذا كان النص أقل من حرفين، لا تبحث
+  if (query.length < 2) return;
+  
+  // قلل وقت الانتظار إلى 250 مللي ثانية
+  searchTimeout = setTimeout(() => searchMovies(query), 250);
+});
 }
 
 init();// ===== زر العودة للأعلى =====
