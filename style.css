@@ -106,7 +106,7 @@ body {
 /* ===== قسم البطل ===== */
 .hero {
   position: relative;
-  min-height: 85vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   margin-top: 70px;
@@ -120,7 +120,7 @@ body {
   inset: 0;
   background-image: url('https://image.tmdb.org/t/p/original/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center 20%;
   opacity: 0.35;
 }
 
@@ -564,7 +564,7 @@ body {
 
 .media-badge.tv {
   background: #28a745;
-}.logo-img {
-  height: 40px;
-  width: auto;
+}.hero::before {
+  background-size: cover;
+  background-position: center top; /* بدلاً من center */
 }

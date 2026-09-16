@@ -321,7 +321,12 @@ async function init() {
 
   window.currentMovies = popular.results;
   displayMovies(popular.results);
-  updateHero(heroMovie);
+ if (movie.backdrop_path) {
+  const heroSection = document.querySelector('.hero');
+  heroSection.style.backgroundImage = `url('${BACKDROP_URL}${movie.backdrop_path}')`;
+  heroSection.style.backgroundSize = 'cover';
+  heroSection.style.backgroundPosition = 'center 20%'; // بدلاً من center
+}
   updateFavoritesUI();
 
   const loader = document.createElement('div');
