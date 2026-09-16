@@ -567,4 +567,10 @@ body {
 }.hero::before {
   background-size: cover;
   background-position: center top; /* بدلاً من center */
+}/* ===== إصلاح حجم الشعار ===== */
+.logo-img {
+  height: 45px !important;
+  width: 45px !important;
+  border-radius: 8px;
+  object-fit: cover;
 }
