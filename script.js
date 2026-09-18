@@ -244,16 +244,36 @@ function clearFavorites() {
 }
 
 // ===== البحث =====
+
 async function searchMovies(query) {
   if (!query.trim()) {
     displayMovies(window.currentMovies);
     return;
   }
-  const res = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=ar&query=${encodeURIComponent(query)}`);
-  const data = await res.json();
-  displayMovies(data.results);
-}
 
+  try {
+    // ابحث بالعربية والإنجليزية معاً
+    const [arRes, enRes] = await Promise.all([
+      fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=ar&query=${encodeURIComponent(query)}`),
+      fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}`)
+    ]);
+
+    const [arData, enData] = await Promise.all([arRes.json(), enRes.json()]);
+
+    // دمج النتائج وإزالة التكرار
+    const allResults = [...(arData.results || []), ...(enData.results || [])];
+    const uniqueResults = allResults.filter((movie, index, self) =>
+      index === self.findIndex(m => m.id === movie.id)
+    );
+
+    // رتب النتائج حسب الشعبية
+    uniqueResults.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+
+    displayMovies(uniqueResults);
+  } catch (error) {
+    console.error('خطأ في البحث:', error);
+  }
+}
 // ===== تبديل عرض المفضلة =====
 function toggleFavoritesView() {
   const section = document.getElementById('favoritesSection');
